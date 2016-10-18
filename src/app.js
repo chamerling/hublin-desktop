@@ -62,8 +62,17 @@ function openConference(name) {
   mainWindow.setSkipTaskbar(true);
   mainWindow.setTitle(`Hublin - ${name}`);
   mainWindow.loadURL(`https://hubl.in/${name}`);
+  mainWindow.on('closed', () => {
+    mainWindow = null
+  });
 }
 
 ipcMain.on('newConference', conference => {
   openConference(conference.name || 'electron');
+});
+
+ipcMain.on('closeConference', () => {
+  if (mainWindow) {
+    mainWindow.close();
+  }
 });
