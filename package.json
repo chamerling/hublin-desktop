@@ -1,14 +1,14 @@
 {
-  "name": "hublin.app",
+  "name": "hublin-desktop",
   "version": "0.0.0",
-  "description": "Hubbin Desktop App",
+  "description": "Hublin Desktop App",
   "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chamerling/hublin.app.git"
+    "url": "git+https://github.com/chamerling/hublin-desktop.git"
   },
   "keywords": [
     "hublin",
@@ -18,9 +18,9 @@
   "author": "Christophe Hamerling <chamerling@linagora.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chamerling/hublin.app/issues"
+    "url": "https://github.com/chamerling/hublin-desktop/issues"
   },
-  "homepage": "https://github.com/chamerling/hublin.app#readme",
+  "homepage": "https://github.com/chamerling/hublin-desktop#readme",
   "dependencies": {
     "alt": "^0.18.6",
     "angular": "^1.5.8",
