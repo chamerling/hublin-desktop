@@ -20,14 +20,16 @@
   "bugs": {
     "url": "https://github.com/chamerling/hublin.app/issues"
   },
-  "homepage": "https://github.com/chamerling/hublin.app#readme"
-  ,
+  "homepage": "https://github.com/chamerling/hublin.app#readme",
   "dependencies": {
     "alt": "^0.18.6",
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
     "electron-debug": "^1.0.1",
     "electron-is-dev": "^0.1.2",
     "electron-oauth2": "^2.3.1",
     "material-ui": "^0.15.4",
+    "menubar": "^5.1.0",
     "octonode": "^0.7.6",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
