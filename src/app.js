@@ -60,7 +60,7 @@ function openConference(name) {
 		}
   });
   mainWindow.setSkipTaskbar(true);
-  mainWindow.setTitle('Hublin');
+  mainWindow.setTitle(`Hublin - ${name}`);
   mainWindow.loadURL(`https://hubl.in/${name}`);
 }
 
