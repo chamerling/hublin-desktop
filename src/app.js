@@ -29,9 +29,9 @@ mb.on('ready', function() {
   Menu.setApplicationMenu(require('./menu'));
 
   function initialize() {
-    mb.window.setSize(320, 200)
-    mb.window.setMaximumSize(320, 200)
-    mb.window.setMinimumSize(320, 200)
+    mb.window.setSize(320, 180)
+    mb.window.setMaximumSize(320, 180)
+    mb.window.setMinimumSize(320, 180)
     mb.window.setResizable(false)
     mb.window.loadURL('file://' + __dirname + '/app/index.html')
   }
@@ -55,11 +55,11 @@ function openConference(name) {
     width: 580,
     height: 365,
     webPreferences: {
-			plugins: true,
-			allowDisplayingInsecureContent: true,
-			nodeIntegration: false,
+      plugins: true,
+      allowDisplayingInsecureContent: true,
+      nodeIntegration: false,
       preload: path.join(__dirname, 'preload.js')
-		}
+    }
   });
   mainWindow.setSkipTaskbar(true);
   mainWindow.loadURL(`${ENDPOINT}/${name}`);
