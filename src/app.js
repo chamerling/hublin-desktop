@@ -24,7 +24,14 @@ let mb = menubar({
   resizable: false
 });
 
-mb.on('ready', function() {
+
+mb.on('ready', () => {
+
+  mb.tray.on('drop-text', (evt, data) => {
+    if (data) {
+      openConference(data)
+    }
+  });
 
   Menu.setApplicationMenu(require('./menu'));
 
