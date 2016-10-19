@@ -2,9 +2,11 @@
 
 import {ipcRenderer} from 'electron';
 import * as angular from 'angular';
+import 'angular-material';
+import 'angular-animate';
 import 'angular-ui-router';
 
-const app = angular.module('hublin.app', ['ui.router']);
+const app = angular.module('hublin.app', ['ui.router', 'ngMaterial', 'ngAnimate']);
 
 app.factory('hublinService', () => {
 
@@ -18,8 +20,13 @@ app.factory('hublinService', () => {
 });
 
 app.controller('HublinMenubarController', ($scope, hublinService) => {
+
+  $scope.conference = {
+    name: ''
+  };
+
   $scope.newConference = function() {
-    hublinService.createConference('electron');
+    hublinService.createConference($scope.conference.name);
   };
 });
 

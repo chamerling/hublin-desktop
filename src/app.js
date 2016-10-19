@@ -29,9 +29,9 @@ mb.on('ready', function() {
   Menu.setApplicationMenu(require('./menu'));
 
   function initialize() {
-    mb.window.setSize(320, 500)
-    mb.window.setMaximumSize(320, 600)
-    mb.window.setMinimumSize(320, 400)
+    mb.window.setSize(320, 200)
+    mb.window.setMaximumSize(320, 200)
+    mb.window.setMinimumSize(320, 200)
     mb.window.setResizable(false)
     mb.window.loadURL('file://' + __dirname + '/app/index.html')
   }
@@ -71,7 +71,7 @@ function openConference(name) {
   });
 }
 
-ipcMain.on('newConference', conference => {
+ipcMain.on('newConference', (evt, conference) => {
   openConference(conference.name || 'electron');
 });
 

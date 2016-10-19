@@ -1,4 +1,7 @@
-<div>
-  <h2>Hey</h2>
-  <button ng-click='newConference()'>Create</button>
+<div layout="row" layout-padding layout-align="center start">
+  <md-input-container>
+    <label>Conference Name</label>
+    <input ng-model="conference.name" type="text">
+  </md-input-container>
+  <md-button class="md-raised md-primary" ng-click='newConference()'>Create</md-button>
 </div>
