@@ -4,6 +4,8 @@ import {app, ipcMain, ipcRenderer, BrowserWindow, Menu} from 'electron';
 import menubar from 'menubar';
 const isDev = require('electron-is-dev');
 const path = require('path');
+const ENDPOINT = 'https://hubl.in';
+const APP_NAME = 'Hublin';
 
 if (isDev) {
   console.log('Running in development');
@@ -14,7 +16,7 @@ require('electron-debug')({showDevTools: true});
 
 let mb = menubar({
   icon: __dirname + '/app/assets/menubarTemplate.png',
-  tooltip: 'Hublin',
+  tooltip: APP_NAME,
   showDockIcon: true,
   preloadWindow : true,
   width: 400,
@@ -43,13 +45,13 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
-  console.log('Hublin is ready')
+  console.log(`${APP_NAME} is ready`);
 });
 
 function openConference(name) {
   mainWindow = new BrowserWindow({
-    alwaysOnTop: true,
     autoHideMenuBar: true,
+    backgroundColor: '#000',
     width: 580,
     height: 365,
     webPreferences: {
@@ -60,10 +62,12 @@ function openConference(name) {
 		}
   });
   mainWindow.setSkipTaskbar(true);
-  mainWindow.setTitle(`Hublin - ${name}`);
-  mainWindow.loadURL(`https://hubl.in/${name}`);
+  mainWindow.loadURL(`${ENDPOINT}/${name}`);
   mainWindow.on('closed', () => {
     mainWindow = null
+  });
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.setTitle(`${APP_NAME} - ${name}`);
   });
 }
 
