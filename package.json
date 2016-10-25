@@ -29,6 +29,7 @@
     "angular-ui-router": "^0.3.1",
     "electron-debug": "^1.0.1",
     "electron-is-dev": "^0.1.2",
+    "electron-json-storage": "^2.0.2",
     "electron-oauth2": "^2.3.1",
     "menubar": "^5.1.0",
     "octonode": "^0.7.6",

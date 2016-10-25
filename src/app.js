@@ -5,6 +5,7 @@ import menubar from 'menubar';
 const isDev = require('electron-is-dev');
 const path = require('path');
 const username = require('username');
+const store = require('./store');
 const ENDPOINT = 'https://hubl.in';
 const APP_NAME = 'Hublin';
 
@@ -90,6 +91,7 @@ function getConferenceName(name) {
 ipcMain.on('newConference', (evt, conference) => {
   getConferenceName(conference.name).then(name => {
     openConference(name);
+    store.saveConference(name);
   });
 });
 
