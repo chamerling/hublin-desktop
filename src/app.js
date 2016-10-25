@@ -4,6 +4,7 @@ import {app, ipcMain, ipcRenderer, BrowserWindow, Menu} from 'electron';
 import menubar from 'menubar';
 const isDev = require('electron-is-dev');
 const path = require('path');
+const username = require('username');
 const ENDPOINT = 'https://hubl.in';
 const APP_NAME = 'Hublin';
 
@@ -78,8 +79,18 @@ function openConference(name) {
   });
 }
 
+function getConferenceName(name) {
+  if (name) {
+    return Promise.resolve(name);
+  }
+
+  return username();
+}
+
 ipcMain.on('newConference', (evt, conference) => {
-  openConference(conference.name || 'electron');
+  getConferenceName(conference.name).then(name => {
+    openConference(name);
+  });
 });
 
 ipcMain.on('closeConference', () => {
