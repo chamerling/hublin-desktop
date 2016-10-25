@@ -2,6 +2,7 @@
 
 import {ipcRenderer} from 'electron';
 import * as angular from 'angular';
+import * as store from './../store';
 import 'angular-material';
 import 'angular-animate';
 import 'angular-ui-router';
@@ -22,12 +23,22 @@ app.factory('hublinService', () => {
 app.controller('HublinMenubarController', ($scope, hublinService) => {
 
   $scope.conference = {
-    name: ''
+    name: store.getLastConference() ? store.getLastConference().name : 'WTF'
   };
 
   $scope.newConference = function() {
     hublinService.createConference($scope.conference.name);
   };
+});
+
+app.directive('conferencesList', function() {
+  return {
+    restrict: 'E',
+    templateUrl: './templates/conferences-list.html',
+    link: function(scope) {
+      scope.conferences = store.getConferences();
+    }
+  }
 });
 
 app.config(($stateProvider, $urlRouterProvider) => {

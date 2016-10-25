@@ -1,0 +1,7 @@
+<md-list class="md-dense" flex>
+  <md-list-item class="md-2-line" ng-repeat="conference in conferences" ng-click="null">
+    <div class="md-list-item-text" layout="column">
+      <h3>{{ conference.name }}</h3>
+      <p>Created on {{::conference.created | date:'MM/dd/yyyy @ h:mma'}}</p>
+    </div>
+</md-list-item>

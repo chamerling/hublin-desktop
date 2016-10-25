@@ -1,7 +1,12 @@
-<div layout="row" layout-padding layout-align="center start">
-  <md-input-container>
-    <label>Conference Name</label>
-    <input ng-model="conference.name" type="text">
-  </md-input-container>
-  <md-button class="md-raised md-primary" ng-click='newConference()'>Create</md-button>
+<div layout="column">
+  <div layout="row" layout-padding layout-align="center start">
+    <md-input-container flex="70" class="md-block">
+      <label>Conference Name</label>
+      <input ng-model="conference.name" type="text">
+    </md-input-container>
+    <md-button flex class="md-raised md-primary" ng-click='newConference()'>Create</md-button>
+  </div>
+  <div>
+    <conferences-list/>
+  </div>
 </div>

@@ -1,27 +1,26 @@
 'use strict';
 
-const storage = require('electron-json-storage');
+const low = require('lowdb');
+const db = low('db.json',  {storage: require('lowdb/lib/file-async')});
+db.defaults({ conferences: []}).value();
 
-function saveConference(name, callback) {
-  const id = Date.now();
-
-  storage.get('conferences', (err, data) => {
-    if (err) {
-      return;
-    }
-
-    data[id] = {
-      name,
-      date: id
-    };
-
-    storage.set('conferences', data, callback);
-  });
+function saveConference(name) {
+  db.get('conferences').push({
+    name,
+    created: Date.now()
+  }).value();
 }
 
-function getConferences(callback) {
-  storage.get('conferences', callback);
+function getConferences() {
+  return db.get('conferences').value();
 }
 
-module.exports.getConferences = getConferences;
-module.exports.saveConference = saveConference;
+function getLastConference() {
+  return db.get('conferences').sortBy('created').take(1).value()[0];
+}
+
+export {
+  saveConference,
+  getConferences,
+  getLastConference
+};

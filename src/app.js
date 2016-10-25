@@ -5,7 +5,7 @@ import menubar from 'menubar';
 const isDev = require('electron-is-dev');
 const path = require('path');
 const username = require('username');
-const store = require('./store');
+import {saveConference} from './store';
 const ENDPOINT = 'https://hubl.in';
 const APP_NAME = 'Hublin';
 
@@ -38,9 +38,9 @@ mb.on('ready', () => {
   Menu.setApplicationMenu(require('./menu'));
 
   function initialize() {
-    mb.window.setSize(320, 180)
-    mb.window.setMaximumSize(320, 180)
-    mb.window.setMinimumSize(320, 180)
+    mb.window.setSize(320, 300)
+    mb.window.setMaximumSize(320, 300)
+    mb.window.setMinimumSize(320, 300)
     mb.window.setResizable(false)
     mb.window.loadURL('file://' + __dirname + '/app/index.html')
   }
@@ -91,7 +91,7 @@ function getConferenceName(name) {
 ipcMain.on('newConference', (evt, conference) => {
   getConferenceName(conference.name).then(name => {
     openConference(name);
-    store.saveConference(name);
+    saveConference(name);
   });
 });
 
